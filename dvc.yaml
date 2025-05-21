@@ -1,0 +1,19 @@
+stages:
+  process_data:
+    cmd: python scripts/process_data.py
+    deps:
+      - data/raw
+      - scripts/process_data.py
+    outs:
+      - data/processed
+  
+  finetune_model:
+    cmd: python scripts/finetune_model.py
+    deps:
+      - data/processed
+      - scripts/finetune_model.py
+    outs:
+      - data/models
+    metrics:
+      - metrics.json:
+          cache: false

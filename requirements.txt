@@ -1,0 +1,46 @@
+# Core dependencies
+langchain==0.1.0
+fastapi==0.104.1
+uvicorn==0.23.2
+pydantic==2.4.2
+python-dotenv==1.0.0
+
+# LLM and embeddings
+transformers==4.35.2
+torch==2.0.1
+sentence-transformers==2.2.2
+accelerate==0.23.0
+bitsandbytes==0.41.1
+
+# Vector database
+chromadb==0.4.18
+hnswlib==0.7.0
+
+# Experiment tracking and MLOps
+comet-ml==3.35.2
+dvc==3.30.1
+dvc-gdrive==2.20.0
+dvc-s3==2.23.0
+
+# Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+httpx==0.25.1
+
+# Code quality
+black==23.10.1
+isort==5.12.0
+flake8==6.1.0
+mypy==1.6.1
+
+# API documentation
+swagger-ui-bundle==0.0.9
+
+# Deployment
+docker==6.1.3
+gunicorn==21.2.0
+
+# Utilities
+tqdm==4.66.1
+pandas==2.1.1
+numpy==1.26.0
