@@ -5,7 +5,7 @@ description = "LLMOps Pipeline for RAG Applications"
 authors = ["Your Name <your.email@example.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.13"
 langchain = "^0.1.0"
 fastapi = "^0.104.0"
 uvicorn = "^0.23.2"
