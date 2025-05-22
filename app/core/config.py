@@ -6,7 +6,7 @@ class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
     
     # LLM Settings
-    MODEL_NAME: str = "meta-llama/Meta-Llama-3-8B-Instruct"
+    MODEL_NAME: str = "microsoft/Phi-3-mini-4k-instruct"
     EMBEDDING_MODEL: str = "sentence-transformers/all-mpnet-base-v2"
     
     # Vector DB Settings
