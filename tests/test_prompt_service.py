@@ -20,10 +20,11 @@ def test_get_default_prompt_template(prompt_service):
     assert "context" in template.input_variables
     assert "query" in template.input_variables
 
+# tests/test_prompt_service.py
 def test_get_experiment_prompt_template(prompt_service):
     # Mock the experiment prompt file
     mock_prompt_data = {
-        "template": "Custom template for {{query}}",
+        "template": "Custom template for {query}",  # Remove double braces
         "input_variables": ["query"]
     }
     
@@ -31,7 +32,7 @@ def test_get_experiment_prompt_template(prompt_service):
          patch("builtins.open", mock_open(read_data=json.dumps(mock_prompt_data))):
         template = prompt_service.get_prompt_template("test-experiment")
     
-    assert template.template == "Custom template for {{query}}"
+    assert template.template == "Custom template for {query}"
     assert template.input_variables == ["query"]
 
 def test_save_prompt_template(prompt_service):
@@ -40,15 +41,17 @@ def test_save_prompt_template(prompt_service):
     with patch("builtins.open", m):
         result = prompt_service.save_prompt_template(
             "test-experiment",
-            "Custom template for {{query}}",
+            "Custom template for {query}",
             ["query"]
         )
     
     assert result is True
     m.assert_called_once_with(os.path.join("data/prompts", "test-experiment.json"), "w")
-    handle = m()
-    expected_json = json.dumps({
-        "template": "Custom template for {{query}}",
+    
+    # Check the content written (use call_args to get the actual call)
+    written_content = ''.join(call.args[0] for call in m().write.call_args_list)
+    expected_data = {
+        "template": "Custom template for {query}",
         "input_variables": ["query"]
-    })
-    handle.write.assert_called_once_with(expected_json)
+    }
+    assert json.loads(written_content) == expected_data

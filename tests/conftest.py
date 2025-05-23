@@ -4,9 +4,6 @@ from fastapi.testclient import TestClient
 from unittest.mock import MagicMock, patch
 
 from app.main import app
-from app.services.rag_service import RAGService
-from app.services.prompt_service import PromptService
-from app.services.experiment_service import ExperimentService
 
 @pytest.fixture
 def client():

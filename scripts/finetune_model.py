@@ -36,7 +36,7 @@ def finetune():
     def tokenize_function(examples):
         return tokenizer(examples["text"], padding="max_length", truncation=True)
     
-    tokenized_dataset = dataset.map(tokenize_function, batched=True)
+    tokenized_dataset = dataset["train"].map(tokenize_function, batched=True)
     
     # Set up training arguments
     training_args = TrainingArguments(
